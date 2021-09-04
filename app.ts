@@ -101,7 +101,7 @@ enum GenderType {
 //     GenderType["genderNeutral"] = "genderNeutral";
 // })(GenderType || (GenderType = {}));
 
-let student1 = {
+let student1: Student = {
   studentID: 121212,
   studentName: "Janet",
   age: 30,
