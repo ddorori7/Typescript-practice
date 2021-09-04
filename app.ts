@@ -1,3 +1,7 @@
+//  땅콩코딩
+//  타입스크립트 설치 환경설정 타입추론 타입명시 인터페이스
+//  열거형(Enum)과 리터럴 타입
+
 function logName(name: string) {
   console.log(name);
 }
@@ -35,9 +39,9 @@ let student = {
 // student.name = 10;
 // 이미 String 값으로 할당된 name을 number로 재할당 하려고 하면 빨간줄로 오류를 표시
 
-function calculateCodingIQ(lostPoints) {
+function calculateCodingIQ(lostPoints: number) {
   // function 위로 마우스를 가져다 대면 함수의 반환값으로 숫자타입을 할당하고 있는것이 보임.(뺄셈 연산자)
-  return 100 - lostPoints;
+  return "값은(100 - lostPoints)";
 }
 
 //  타입 명시
@@ -69,6 +73,47 @@ let courseCompleted: boolean = false;
 //   return null;
 // } -> 객체타입을 좀더 편하게 만들기 위해 interface 활용
 
+// 숫자 열거형 (Numeric Enum)
+// enum GenderType {
+//   Male,
+//   Female,
+//   genderNeutral,
+// }
+// 자바스크립트 코드로 변환된 모습!
+// var GenderType;
+// (function (GenderType) {
+//   GenderType[(GenderType["Male"] = 0)] = "Male";
+//   GenderType[(GenderType["Female"] = 1)] = "Female";
+//   GenderType[(GenderType["genderNeutral"] = 2)] = "genderNeutral";
+// })(GenderType || (GenderType = {}));
+
+// 문자열 열거형 (String Enum)
+enum GenderType {
+  Male = "male",
+  Female = "female",
+  genderNeutral = "genderNeutral",
+}
+// 자바스크립트 코드로 변환된 모습!
+// var GenderType;
+// (function (GenderType) {
+//     GenderType["Male"] = "male";
+//     GenderType["Female"] = "female";
+//     GenderType["genderNeutral"] = "genderNeutral";
+// })(GenderType || (GenderType = {}));
+
+let student1 = {
+  studentID: 121212,
+  studentName: "Janet",
+  age: 30,
+  gender: "female",
+  // gender: GenderType.Female,
+  // Enum 타입을
+  // 객체 프로퍼티에 적용할 때
+  // -> gender: GenderType.Female
+  subject: "Mongo DB",
+  courseCompleted: false,
+};
+
 // 인터페이스 이름은 대문자로 시작
 interface Student {
   // Readonly 프로퍼티는 읽기 전용 프로퍼티로
@@ -80,7 +125,8 @@ interface Student {
   //  optional 기호인 ? 를 붙여준다!
   //  ?가 없을때는 아래에서 age값을 제거했을때 에러가 뜨지만
   //  추가후에는 에러가 안뜬다.
-  gender: string;
+  gender: "male" | "female" | "genderNeutral"; // 리터럴 타입
+  // gender: GenderType; // enum
   subject: string;
   courseCompleted: boolean;
   //  메소드는 객체내에서 선언된 함수
@@ -100,21 +146,13 @@ function getStudentDetails(studentID: number): Student {
     studentID: 12345,
     studentName: "Jenny kim",
     // age: 21,
+    // gender: GenderType.Female,
     gender: "female",
     subject: "Javascript",
     courseCompleted: false,
   };
   // 기본적으로 인터페이스 프로퍼티 중에 하나라도 빠지면 에러뜸
 }
-
-let student1 = {
-  studentID: 121212,
-  studentName: "Janet",
-  age: 30,
-  gender: "Female",
-  subject: "Mongo DB",
-  courseCompleted: false,
-};
 
 function saveStudentDetails(student: Student): void {
   // student.studentID = 11222;
