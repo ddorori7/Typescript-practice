@@ -1,3 +1,4 @@
+"use strict";
 //  땅콩코딩
 //  타입스크립트 설치 환경설정 타입추론 타입명시 인터페이스
 //  열거형(Enum)과 리터럴 타입
@@ -27,7 +28,7 @@ var student = {
     codingIQ: 80,
     code: function () {
         console.log("brain is working hard");
-    }
+    },
 };
 // student.name = 10;
 // 이미 String 값으로 할당된 name을 number로 재할당 하려고 하면 빨간줄로 오류를 표시
@@ -97,7 +98,7 @@ var student1 = {
     // 객체 프로퍼티에 적용할 때
     // -> gender: GenderType.Female
     subject: "Mongo DB",
-    courseCompleted: false
+    courseCompleted: false,
 };
 // 인터페이스를 타입으로 가지는 값은
 // 인터페이스의 구조를 그 값으로 가지도록 강제된다
@@ -114,7 +115,7 @@ function getStudentDetails(studentID) {
         // gender: GenderType.Female,
         gender: "female",
         subject: "Javascript",
-        courseCompleted: false
+        courseCompleted: false,
     };
     // 기본적으로 인터페이스 프로퍼티 중에 하나라도 빠지면 에러뜸
 }

@@ -1,3 +1,4 @@
+"use strict";
 var someValue = 5;
 // any 타입은 어떤 타입이든 모두 ok
 someValue = "hello";
